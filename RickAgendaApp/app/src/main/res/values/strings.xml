@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RickAgendaApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="first_fragment">First Fragment</string>
+    <string name="button_next">Detail Character</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_like">Like</string>
+</resources>
