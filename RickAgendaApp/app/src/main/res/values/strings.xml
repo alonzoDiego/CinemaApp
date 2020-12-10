@@ -3,7 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="first_fragment">First Fragment</string>
+    <string name="first_fragment">Characters</string>
+    <string name="favorite_title">Favorites</string>
     <string name="button_next">Detail Character</string>
 
     <string name="menu_home">Home</string>
