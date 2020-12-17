@@ -1,12 +1,15 @@
-package pe.edu.upc.rickagendaapp
+package pe.edu.upc.rickagendaapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import pe.edu.upc.rickagendaapp.R
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainApplication : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
