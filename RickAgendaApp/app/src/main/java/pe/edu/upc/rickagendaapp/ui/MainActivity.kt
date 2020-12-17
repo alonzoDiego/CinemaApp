@@ -9,7 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pe.edu.upc.rickagendaapp.R
 
 @AndroidEntryPoint
-class MainApplication : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

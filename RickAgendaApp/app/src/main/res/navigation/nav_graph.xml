@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="pe.edu.upc.rickagendaapp.ui.CharactersFragment"
+        android:name="pe.edu.upc.rickagendaapp.ui.characters.CharactersFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters" >
         <action
@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="pe.edu.upc.rickagendaapp.ui.FavoriteFragment"
+        android:name="pe.edu.upc.rickagendaapp.ui.characterfavorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="pe.edu.upc.rickagendaapp.ui.CharacterDetailFragment"
+        android:name="pe.edu.upc.rickagendaapp.ui.characterdetail.CharacterDetailFragment"
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail" />
 </navigation>

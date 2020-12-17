@@ -1,4 +1,4 @@
-package pe.edu.upc.rickagendaapp.ui
+package pe.edu.upc.rickagendaapp.ui.characterfavorite
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

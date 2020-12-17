@@ -1,4 +1,4 @@
-package pe.edu.upc.rickagendaapp.ui
+package pe.edu.upc.rickagendaapp.ui.characters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,8 +18,8 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btNext.setOnClickListener {
-            findNavController().navigate(R.id.characterDetailFragment)
-        }
+        //btNext.setOnClickListener {
+        //    findNavController().navigate(R.id.characterDetailFragment)
+        //}
     }
 }
