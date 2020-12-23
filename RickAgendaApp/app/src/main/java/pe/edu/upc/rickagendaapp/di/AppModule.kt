@@ -38,6 +38,7 @@ object AppModule {
     @Provides
     fun provideCharacterRemoteDS(characterService: CharacterService) = CharacterRemoteDS(characterService)
 
+    //Room dependency
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext appContext: Context) = AppDatabase.getDatabase(appContext)
@@ -45,6 +46,7 @@ object AppModule {
     @Singleton
     @Provides
     fun providerCharacterDao(db: AppDatabase) = db.characterDo()
+    //
 
     @Singleton
     @Provides

@@ -5,56 +5,59 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_character_detail.*
 import pe.edu.upc.rickagendaapp.R
+import pe.edu.upc.rickagendaapp.data.entities.Character
+import pe.edu.upc.rickagendaapp.utils.Resource
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CharacterDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModel: CharacterDetailViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_character_detail, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CharacterDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CharacterDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.getInt("id")?.let { viewModel.start(it) }
+        setupObservers()
+    }
+
+    private fun setupObservers(){
+        viewModel.character.observe(viewLifecycleOwner, Observer {
+            when(it.status){
+                Resource.Status.SUCCESS -> {
+                    characterBind(it.data!!)
+                    progress_detail_bar.visibility = View.GONE
+                    character_detail_cl.visibility = View.VISIBLE
+                }
+                Resource.Status.ERROR -> {
+                    Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+                }
+                Resource.Status.LOADING -> {
+                    progress_detail_bar.visibility = View.VISIBLE
+                    character_detail_cl.visibility = View.GONE
                 }
             }
+        })
+    }
+
+    private fun characterBind(character: Character){
+        name_detail_tv.text = character.name
+        species_detail_tv.text = character.species
+        status_detail_tv.text = character.status
+        gender_detail_tv.text = character.gender
+        Glide.with(image_detail_iv)
+            .load(character.image)
+            .transform(CircleCrop())
+            .into(image_detail_iv)
     }
 }
